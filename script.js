@@ -4,11 +4,11 @@ function getComputerChoice(){
 
     const choices = ['rock', 'paper', 'scissors']
     let choice = choices[Math.floor(Math.random() * 3)] ;
-    return choice
+    return choice;
 }
 
 function getPlayerSelection(){
-    return prompt('Choose: Rock, Paper or Scissors').toLowerCase()
+    //Get Rock or Paper or Scissor from user
 }
 
 function getWinner(computerSelection, playerSelection){
@@ -56,7 +56,7 @@ function game(){
     let winner = ""
     
 
-     for(let i = 1; i <= 5; i++){
+     
 
         
 
@@ -80,10 +80,10 @@ function game(){
         console.log(`Comp Score: ${compScore} \nPlayer Score:  ${playerScore}`)
         
 
-    }
+    
 }
 
-game()
+game();
 
 
 

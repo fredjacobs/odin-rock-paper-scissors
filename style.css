@@ -1,0 +1,23 @@
+body{
+
+}
+
+.page-container{
+    width:1100px;
+    margin: 0 auto;
+}
+
+.flex-container{
+    display: flex;
+    justify-content: center;
+}
+
+.center-heading{
+    text-align: center;
+}
+
+.btn-option{
+    width:150px;
+    padding: 25px 5px;
+    margin:5px;     
+}
