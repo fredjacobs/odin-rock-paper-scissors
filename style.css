@@ -16,7 +16,11 @@ body{
     text-align: center;
 }
 
-.btn-option{
+.heading-subtext{
+    text-align: center;
+}
+
+.btn-player-choice, .btn-computer-choice{
     width:150px;
     padding: 25px 5px;
     margin:5px;     
