@@ -1,4 +1,34 @@
 
+    const playerOptionButtons = document.querySelectorAll('.btn-player-choice');
+    const roundWinner = document.querySelector('#round-winner');
+    const finalWinner = document.querySelector('#final-winner');
+    const displayPlayerScore = document.getElementById('display-player-score');
+    const displayCompScore = document.getElementById('display-comp-score');
+    const btnNewGame = document.getElementById('btn-new-game');
+    let playerChoice = '';
+    let computerChoice = '';
+    let compScore = 0;
+    let playerScore = 0;
+    let winner = "";
+    
+    btnNewGame.addEventListener('click', init);
+
+    function init(){
+
+        compScore = 0;
+        playerScore = 0;
+        winner = '';
+
+        displayPlayerScore.textContent = playerScore;
+        displayCompScore.textContent = compScore;
+        roundWinner.textContent = '';
+        finalWinner.textContent = '';
+
+        playerOptionButtons.forEach(function(el){
+            el.addEventListener('click', game)
+        });
+
+    }
 
 function getComputerChoice(){
 
@@ -7,9 +37,6 @@ function getComputerChoice(){
     return choice;
 }
 
-function getPlayerSelection(){
-    //Get Rock or Paper or Scissor from user
-}
 
 function getWinner(computerSelection, playerSelection){
 
@@ -35,55 +62,58 @@ function getWinner(computerSelection, playerSelection){
 
 }
 
+function game(e){
 
+        playerChoice = e.target.value;
+        computerChoice = getComputerChoice();
 
-function playRound(){
+        roundInfo = getWinner(computerChoice, playerChoice)
 
-    const computerSelection = getComputerChoice()
-    const playerSelection = getPlayerSelection()
+        //NOTE: Find a way to make below lines into multi lines.
 
-    let roundInfo = getWinner(computerSelection, playerSelection)
+        const winMessage = `Player Wins Round!
+        ${roundInfo.playerSelection} beats ${roundInfo.computerSelection}`
 
-    return roundInfo
+        const looseMessage = `Computer Wins Round! 
+        ${roundInfo.computerSelection} beats ${roundInfo.playerSelection}`
 
-
-}
-
-function game(){
-
-    let compScore = 0
-    let playerScore = 0
-    let winner = ""
-    
-
-     
-
+        const drawMessage  = `Draw : 
+        ${roundInfo.computerSelection} = ${roundInfo.playerSelection}`
         
-
-        roundInfo = playRound()
-
-        const winMessage = `You win! ${roundInfo.playerSelection} beats ${roundInfo.computerSelection}`
-        const looseMessage = `You loose! ${roundInfo.computerSelection} beats ${roundInfo.playerSelection}`
-        const drawMessage  = `Draw - ${roundInfo.computerSelection} = ${roundInfo.playerSelection}`
 
         if (roundInfo.winner === 'computer'){
             compScore++
-            console.log(looseMessage)
+            roundWinner.textContent = looseMessage;
             
         }else if(roundInfo.winner === 'player'){
             playerScore++
-            console.log(winMessage)
+            roundWinner.textContent = winMessage;
         }else{
-            console.log(drawMessage)
+            roundWinner.textContent = drawMessage;
         }
 
-        console.log(`Comp Score: ${compScore} \nPlayer Score:  ${playerScore}`)
-        
+        if (playerScore == 5){
+            finalWinner.textContent = 'You Win!';
+            playerOptionButtons.forEach(function(el){
+                el.removeEventListener('click', game)
+            });
+        } else if (compScore == 5) {
+            finalWinner.textContent = 'Computer Wins!';
+            playerOptionButtons.forEach(function(el){
+                el.removeEventListener('click', game)
+            });
+        } 
 
-    
+        displayPlayerScore.textContent = playerScore;
+        displayCompScore.textContent = compScore;
+
+        
 }
 
-game();
+
+
+
+
 
 
 

@@ -5,25 +5,40 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <div class="page-container">
+        
         <h1 class="center-heading">Let's Play Rock, Paper, Scissors!</h1>
+        <div class="flex-container">
+        <button id="btn-new-game">NEW GAME</button>
+        </div>
         <p class="heading-subtext">Player, make your choice.</p>
+       
         <div class="option-buttons flex-container">
-            <button class="btn-player-choice">ROCK</button>
-            <button class="btn-player-choice">PAPER</button>
-            <button class="btn-player-choice">SCISSORS</button>
+            <button class="btn-player-choice" value="rock">ROCK</button>
+            <button class="btn-player-choice" value="paper">PAPER</button>
+            <button class="btn-player-choice" value="scissors">SCISSORS</button>
         </div>
 
         <p class="heading-subtext">Computer choice.</p>
         <div class="option-buttons flex-container">
-            <button class="btn-computer-choice">ROCK</button>
-            <button class="btn-computer-choice">PAPER</button>
-            <button class="btn-computer-choice">SCISSORS</button>
+            <button class="btn-computer-choice" value="rock">ROCK</button>
+            <button class="btn-computer-choice" value="paper">PAPER</button>
+            <button class="btn-computer-choice" value="scissors">SCISSORS</button>
+        </div>
+        <div class="result-container flex-container">
+
+            <div class="even-container"><h2>COMPUTER SCORE</h2>
+            <p id="display-comp-score">0</p></div>
+            <div class="even-container"><div id="round-winner"><p></p> </div>
+            <div ><h1 id="final-winner"></h1> </div></div>
+            <div class="even-container"><h2>PLAYER SCORE</h2>
+            <p id="display-player-score">0</p></div>
+            
         </div>
     </div>
     

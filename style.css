@@ -25,3 +25,19 @@ body{
     padding: 25px 5px;
     margin:5px;     
 }
+
+#round-winner, #final-winner{
+    text-align: center;
+    padding-top:25px;
+}
+
+.even-container{
+    flex:1;
+    text-align: center;
+}
+
+#display-comp-score, #display-player-score{
+    font-size:36px;
+    color:red;
+    font-weight: bold;
+}
