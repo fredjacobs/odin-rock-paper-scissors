@@ -41,3 +41,12 @@ body{
     color:red;
     font-weight: bold;
 }
+
+.comp-focus-btn{
+    background: pink;
+}
+
+.player-focus-btn{
+    background: blue;
+    color:white;
+}

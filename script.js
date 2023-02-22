@@ -1,5 +1,6 @@
 
     const playerOptionButtons = document.querySelectorAll('.btn-player-choice');
+    const compOptionButtons = document.querySelectorAll('.btn-computer-choice');
     const roundWinner = document.querySelector('#round-winner');
     const finalWinner = document.querySelector('#final-winner');
     const displayPlayerScore = document.getElementById('display-player-score');
@@ -19,6 +20,8 @@
         playerScore = 0;
         winner = '';
 
+        clearBtns();
+
         displayPlayerScore.textContent = playerScore;
         displayCompScore.textContent = compScore;
         roundWinner.textContent = '';
@@ -27,14 +30,59 @@
         playerOptionButtons.forEach(function(el){
             el.addEventListener('click', game)
         });
+        console.log(playerOptionButtons);
 
     }
+
+
 
 function getComputerChoice(){
 
     const choices = ['rock', 'paper', 'scissors']
     let choice = choices[Math.floor(Math.random() * 3)] ;
+
+    let choiceUpper = choice.toUpperCase();
+
+    compOptionButtons.forEach(function(choice){
+            
+        if (choice.innerHTML == choiceUpper){
+            choice.classList.add('comp-focus-btn');
+        }
+        else if(choice.innerHTML != choiceUpper) {
+            choice.classList.remove('comp-focus-btn');
+        }
+    })
+
     return choice;
+}
+
+function clearBtns(){
+
+    playerOptionButtons.forEach(function(choice){
+
+        choice.classList.remove('player-focus-btn');
+
+    });
+
+    compOptionButtons.forEach(function(choice){
+       
+        choice.classList.remove('comp-focus-btn');
+    });
+}
+
+function changeBtnColor(choice){
+    let choiceUpper = choice.toUpperCase();
+
+    playerOptionButtons.forEach(function(choice){
+            
+        if (choice.innerHTML == choiceUpper){
+            choice.classList.add('player-focus-btn');
+        }
+        else if(choice.innerHTML != choiceUpper) {
+            choice.classList.remove('player-focus-btn');
+        }
+    })
+
 }
 
 
@@ -66,6 +114,8 @@ function game(e){
 
         playerChoice = e.target.value;
         computerChoice = getComputerChoice();
+
+        changeBtnColor(playerChoice);
 
         roundInfo = getWinner(computerChoice, playerChoice)
 
